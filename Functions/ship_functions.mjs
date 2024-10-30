@@ -23,7 +23,6 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
                 position[2] = tx;
                 position[3] = ty;
                 angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-                console.log(angle);
             }
         }
     }
@@ -34,7 +33,7 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
             position[0] = tx; position[1] = ty;
         }
         if (id === identifierTWO) {
-        position[2] = tx; position[3] = ty;
+            position[2] = tx; position[3] = ty;
         }
 
 
@@ -45,8 +44,6 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
             position[0] = tx;
             position[1] = ty;
         }
-        console.log(identifierONE);
-        console.log(identifierTWO);
     }
 
     function draw_spaceship(x,y) {
@@ -57,22 +54,22 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         var sHeight = canvas.height;
         var path = new Path2D();
         //triangle
-        path.moveTo(sWidth/30, 0);                       //right
-        path.lineTo(0, -sWidth/12);                       //top
-        path.lineTo(-sWidth/30, 0);                       //left
+        path.moveTo(sWidth/30, 0);                              //right
+        path.lineTo(0, -sWidth/12);                             //top
+        path.lineTo(-sWidth/30, 0);                             //left
 
         //rectangle
-        path.lineTo(-sWidth/30, sWidth/9);                    //left-bottom           
-        path.lineTo(sWidth/30, sWidth/9);                    //right-bottom
+        path.lineTo(-sWidth/30, sWidth/9);                      //left-bottom           
+        path.lineTo(sWidth/30, sWidth/9);                       //right-bottom
 
         //Wing
-        path.lineTo(sWidth/9, sWidth/9);                    //right-wing
+        path.lineTo(sWidth/9, sWidth/9);                        //right-wing
         path.lineTo(sWidth/9, sWidth/7); 
-        path.lineTo(-sWidth/9, sWidth/7);                     //left-wing
+        path.lineTo(-sWidth/9, sWidth/7);                       //left-wing
         path.lineTo(-sWidth/9, sWidth/9);
         path.lineTo(sWidth/30, sWidth/9);
 
-        ctx.fill(path);                 //End figure
+        ctx.fill(path);                                         //End figure
         PATH = path;
     }
 
