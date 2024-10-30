@@ -23,7 +23,7 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
                 position[2] = tx;
                 position[3] = ty;
                 angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-                //console.log(angle);
+                console.log(angle);
             }
         }
     }
@@ -41,6 +41,7 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
     }
 
     function draw_spaceship(x,y, angle = 0) {
+        
         ctx.translate(x,y);
         ctx.rotate(angle);
         var sWidth = canvas.width;
@@ -61,10 +62,6 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         path.lineTo(-40, 55);                     //left-wing
         path.lineTo(-40, 40);
         path.lineTo(12, 40);  
-
-
-
-
 
         ctx.fill(path);                 //End figure
         PATH = path;
