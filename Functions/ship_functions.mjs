@@ -23,7 +23,7 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
                 position[2] = tx;
                 position[3] = ty;
                 angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-                console.log(angle);
+                //console.log(angle);
             }
         }
     }
@@ -35,7 +35,7 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
             position[0] = tx;
             position[1] = ty;
         }
-        
+        console.log(position);
     }
 
     function draw_spaceship(x,y, angle = 0) {
