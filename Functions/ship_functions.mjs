@@ -40,7 +40,7 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         console.log(identifierTWO);
     }
 
-    function draw_spaceship(x,y, angle = 0) {
+    function draw_spaceship(x,y) {
         
         ctx.translate(x,y);
         ctx.rotate(angle);
