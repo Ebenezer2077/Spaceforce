@@ -61,7 +61,9 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         path.lineTo(sWidth/9, sWidth/7); 
         path.lineTo(-sWidth/9, sWidth/7);                     //left-wing
         path.lineTo(-sWidth/9, sWidth/9);
-        path.lineTo(sWidth/30, sWidth/9);  
+        path.lineTo(sWidth/30, sWidth/9);
+        
+        ctx.rotate(-angle);
 
         ctx.fill(path);                 //End figure
         PATH = path;
