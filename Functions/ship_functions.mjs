@@ -32,7 +32,6 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
 
         if (id === identifierONE) {
             position[0] = tx; position[1] = ty;
-            console.log("test");
         }
         if (id === identifierTWO) {
         position[2] = tx; position[3] = ty;
@@ -53,7 +52,7 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
     function draw_spaceship(x,y) {
         
         ctx.translate(x,y);
-        ctx.rotate(angle);
+        ctx.rotate(angle - (Math.PI/2));
         var sWidth = canvas.width;
         var sHeight = canvas.height;
         var path = new Path2D();
@@ -72,8 +71,6 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         path.lineTo(-sWidth/9, sWidth/7);                     //left-wing
         path.lineTo(-sWidth/9, sWidth/9);
         path.lineTo(sWidth/30, sWidth/9);
-        
-        ctx.rotate(-angle);
 
         ctx.fill(path);                 //End figure
         PATH = path;
