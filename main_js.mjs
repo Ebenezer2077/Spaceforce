@@ -36,7 +36,7 @@ window.onload = () => {
         for(const t of evt.changedTouches) {
             delete Touches[t.identifier];
             for(const ie of interactive_Elements) {
-                //ie.reset(t.identifier);
+                ie.reset(t.identifier);
             }
         }
     });

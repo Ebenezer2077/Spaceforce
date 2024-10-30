@@ -29,8 +29,13 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
     }
 
     function move(id, tx, ty) {
-        position = [tx, ty];
-        console.log("momentarily Position: ", position);
+        if(identifierONE !== undefined && identifierTWO !== undefined) {
+            angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
+        } else if(identifierONE !== undefined) {
+            position[0] = tx;
+            position[1] = ty;
+        }
+        
     }
 
     function draw_spaceship(x,y, angle = 0) {
@@ -63,16 +68,20 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         PATH = path;
     }
 
+    function reset(id) {
+        if(id === identifierONE) {
+            touched = false;
+            identifierONE = undefined;
+        }
+        if(id === identifierTWO) {
+            identifierTWO = undefined;
+        }
+    }
 
-    return { draw, Touched, move };
+
+    return { draw, Touched, move, reset };
 }
 
-function circle(ctx, x, y, radius, color) {
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, 6.3, true)
-    ctx.fill();
-}
 
 function distance(x, y, tx, ty) {
     const dx = tx - x;
