@@ -35,7 +35,8 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
             position[0] = tx;
             position[1] = ty;
         }
-        console.log(position);
+        console.log(identifierONE);
+        console.log(identifierTWO);
     }
 
     function draw_spaceship(x,y, angle = 0) {
