@@ -30,10 +30,11 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
 
     function move(id, tx, ty) {
 
-        if (id === identifierOne) {
+        if (id === identifierONE) {
             position[0] = tx; position[1] = ty;
+            console.log("test");
         }
-        if (id === identifierTwo) {
+        if (id === identifierTWO) {
         position[2] = tx; position[3] = ty;
         }
 
