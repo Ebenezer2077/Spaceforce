@@ -31,7 +31,8 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
     function move(id, tx, ty) {
         if(identifierONE !== undefined && identifierTWO !== undefined) {
             angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-        } else if(identifierONE !== undefined) {
+        } 
+        if(identifierONE !== undefined) {
             position[0] = tx;
             position[1] = ty;
         }
