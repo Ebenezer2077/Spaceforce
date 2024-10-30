@@ -1,9 +1,11 @@
-export function createShip(ctx, x, y, radius, callback) {
+export function createShip(canvas ,ctx, x, y, radius, callback) {
+
     let touched, identifier
     let position = [x, y];
 
     function draw() {
-        circle(ctx, position[0], position[1], radius, "blue");
+        draw_spaceship(position[0], position[1]);
+        //circle(ctx, position[0], position[1], radius, "blue");
     }
 
     function Touched(id, tx, ty) {
@@ -19,6 +21,32 @@ export function createShip(ctx, x, y, radius, callback) {
         console.log("momentarily Position: ", position);
     }
 
+    function draw_spaceship(x,y) {
+        var sWidth = canvas.width;
+        var sHeight = canvas.height;
+        var path = new Path2D();
+        //triangle
+        path.moveTo(x+12, y);                       //right
+        path.lineTo(x, y-30);                       //top
+        path.lineTo(x-12, y);                       //left
+
+        //rectangle
+        path.lineTo(x-12, y+40);                    //left-bottom           
+        path.lineTo(x+12, y+40);                    //right-bottom
+
+        //Wing
+        path.lineTo(x+40, y+40);                    //right-wing
+        path.lineTo(x+40, y+55); 
+        path.lineTo(x-40, y+55);                     //left-wing
+        path.lineTo(x-40, y+40);
+        path.lineTo(x+12, y+40);  
+
+
+
+
+
+        ctx.fill(path);                 //End figure
+    }
 
 
     return { draw, Touched, move };
