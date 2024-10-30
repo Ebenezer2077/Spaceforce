@@ -48,20 +48,20 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         var sHeight = canvas.height;
         var path = new Path2D();
         //triangle
-        path.moveTo(12, 0);                       //right
-        path.lineTo(0, -30);                       //top
-        path.lineTo(-12, 0);                       //left
+        path.moveTo(sWidth/30, 0);                       //right
+        path.lineTo(0, -sWidth/12);                       //top
+        path.lineTo(-sWidth/30, 0);                       //left
 
         //rectangle
-        path.lineTo(-12, 40);                    //left-bottom           
-        path.lineTo(12, 40);                    //right-bottom
+        path.lineTo(-sWidth/30, sWidth/9);                    //left-bottom           
+        path.lineTo(sWidth/30, sWidth/9);                    //right-bottom
 
         //Wing
-        path.lineTo(40, 40);                    //right-wing
-        path.lineTo(40, 55); 
-        path.lineTo(-40, 55);                     //left-wing
-        path.lineTo(-40, 40);
-        path.lineTo(12, 40);  
+        path.lineTo(sWidth/9, sWidth/9);                    //right-wing
+        path.lineTo(sWidth/9, sWidth/7); 
+        path.lineTo(-sWidth/9, sWidth/7);                     //left-wing
+        path.lineTo(-sWidth/9, sWidth/9);
+        path.lineTo(sWidth/30, sWidth/9);  
 
         ctx.fill(path);                 //End figure
         PATH = path;
