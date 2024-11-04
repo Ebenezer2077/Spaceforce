@@ -47,6 +47,7 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
     }
 
     function draw_spaceship(x,y) {
+        ctx.fillStyle = "red";
         
         ctx.translate(x,y);
         ctx.rotate(angle - (Math.PI/2));

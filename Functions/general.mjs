@@ -11,3 +11,8 @@ export function init(id) {
 
     return {canvas, ctx};
 }
+
+export function draw_background(ctx) {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
+}

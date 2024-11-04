@@ -6,13 +6,14 @@ window.onload = () => {
     ctx.fillStyle = "#f00";
 
     const interactive_Elements = [];
-    interactive_Elements.push(ship.createShip(canvas, ctx, canvas.width/2, canvas.width, 30, () => {}));
+    interactive_Elements.push(ship.createShip(canvas, ctx, 100, 100, 30, () => {}));
 
     const Touches = {};
 
     function draw() {
         ctx.resetTransform();
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
+        lib.draw_background(ctx);
 
         for(const ie of interactive_Elements) {
             ie.draw();
