@@ -1,7 +1,7 @@
 export function createShip(canvas ,ctx, x1, y1, radius, callback) {
 
     let touched, identifierONE = undefined, identifierTWO = undefined;
-    let position = [x1, y1, 0, 0];
+    let position = [x1, y1, undefined, undefined];
     let PATH = new Path2D();
     let angle = 0;
 
@@ -40,17 +40,19 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         if(identifierONE !== undefined && identifierTWO !== undefined) {
             angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
         } 
+        /*
         if(identifierONE !== undefined) {
             position[0] = tx;
             position[1] = ty;
         }
+            */
     }
 
     function draw_spaceship(x,y) {
         ctx.fillStyle = "red";
         
         ctx.translate(x,y);
-        ctx.rotate(angle - (Math.PI/2));
+        ctx.rotate(angle + (Math.PI/2));
         var sWidth = canvas.width;
         var sHeight = canvas.height;
         var path = new Path2D();
