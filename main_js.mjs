@@ -6,7 +6,7 @@ window.onload = () => {
     ctx.fillStyle = "#f00";
 
     const interactive_Elements = [];
-    interactive_Elements.push(ship.createShip(canvas, ctx, 100, 100, 30, () => {}));
+    interactive_Elements.push(ship.createShip(canvas, ctx, 100, 100));
 
     const Touches = {};
 

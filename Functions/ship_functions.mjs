@@ -1,4 +1,4 @@
-export function createShip(canvas ,ctx, x1, y1, radius, callback) {
+export function createShip(canvas ,ctx, x1, y1) {
 
     let touched, identifierONE = undefined, identifierTWO = undefined;
     let position = [x1, y1, undefined, undefined];
@@ -40,12 +40,6 @@ export function createShip(canvas ,ctx, x1, y1, radius, callback) {
         if(identifierONE !== undefined && identifierTWO !== undefined) {
             angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
         } 
-        /*
-        if(identifierONE !== undefined) {
-            position[0] = tx;
-            position[1] = ty;
-        }
-            */
     }
 
     function draw_spaceship(x,y) {
