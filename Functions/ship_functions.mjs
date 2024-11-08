@@ -49,6 +49,7 @@ export function createShip(canvas ,ctx, x1, y1) {
 
         if(identifierONE !== undefined && identifierTWO !== undefined) {
             angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
+            Projectiles.push(newProjectile(position[2], position[3], 15, angle));
         } 
     }
 
