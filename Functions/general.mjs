@@ -13,6 +13,6 @@ export function init(id) {
 }
 
 export function draw_background(ctx) {
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
 }

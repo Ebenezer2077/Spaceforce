@@ -9,8 +9,12 @@ export function createShip(canvas ,ctx, x1, y1) {
 
     let Projectiles = [];                                                   //zum speichern der Projekktile des Schiffes
 
+
     function draw() {
         draw_spaceship(position[0], position[1]);
+        for(let element of Projectiles) {
+            element.draw_instanz(ctx);
+        }
     }
 
     function Touched(id, tx, ty) {
@@ -27,7 +31,8 @@ export function createShip(canvas ,ctx, x1, y1) {
                 position[2] = tx;
                 position[3] = ty;
                 angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-                newProjectile().draw_instanz()                                              //continue here
+                Projectiles.push(newProjectile(position[0], position[1], 20, angle));
+                
             }
         }
     }
