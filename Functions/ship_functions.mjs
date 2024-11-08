@@ -1,3 +1,5 @@
+import { newProjectile } from "../Interfaces/Projectile.mjs";
+
 export function createShip(canvas ,ctx, x1, y1) {
 
     let touched, identifierONE = undefined, identifierTWO = undefined;
@@ -25,6 +27,7 @@ export function createShip(canvas ,ctx, x1, y1) {
                 position[2] = tx;
                 position[3] = ty;
                 angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
+                newProjectile().draw_instanz()                                              //continue here
             }
         }
     }
