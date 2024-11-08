@@ -13,6 +13,7 @@ export function createShip(canvas ,ctx, x1, y1) {
     function draw() {
         draw_spaceship(position[0], position[1]);
         for(let element of Projectiles) {
+            element.fly();
             element.draw_instanz(ctx);
         }
     }
@@ -31,7 +32,7 @@ export function createShip(canvas ,ctx, x1, y1) {
                 position[2] = tx;
                 position[3] = ty;
                 angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-                Projectiles.push(newProjectile(position[2], position[3], 20, angle));
+                Projectiles.push(newProjectile(position[2], position[3], 15, angle));
             }
         }
     }
