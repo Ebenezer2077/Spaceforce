@@ -5,6 +5,8 @@ export function createShip(canvas ,ctx, x1, y1) {
     let PATH = new Path2D();
     let angle = 0;
 
+    let Projectiles = [];                                                   //zum speichern der Projekktile des Schiffes
+
     function draw() {
         draw_spaceship(position[0], position[1]);
     }
