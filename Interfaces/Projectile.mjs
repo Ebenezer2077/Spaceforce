@@ -6,8 +6,10 @@ export function newProjectile( PosX, PosY, Velocity, Angle) {
         angle: Angle,
 
         draw_instanz: (ctx) => {
+            ctx.resetTransform();
+            ctx.translate(instanz.posx, instanz.posy);
             ctx.beginPath();
-            ctx.arc(PosX, PosY, 400, 0, 2 * Math.PI);
+            ctx.arc(0, 0, 40, 0, 2 * Math.PI);
             ctx.stroke();
         }
     }
