@@ -6,11 +6,14 @@ window.onload = () => {
     ctx.fillStyle = "#f00";
 
     const interactive_Elements = [];
-    interactive_Elements.push(ship.createShip(ctx, 100, 100, 30, () => {}));
+    interactive_Elements.push(ship.createShip(canvas, ctx, 100, 100));
+
+    const Touches = {};
 
     function draw() {
         ctx.resetTransform();
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
+        lib.draw_background(ctx);
 
         for(const ie of interactive_Elements) {
             ie.draw();
@@ -18,4 +21,36 @@ window.onload = () => {
         window.requestAnimationFrame(draw);
     }
     draw();
+
+    canvas.addEventListener("touchstart", (evt) => {
+        evt.preventDefault();
+        for(const t of evt.changedTouches) {
+            Touches[t.identifier] = { x: t.pageX, y: t.pageY};
+            for(const ie of interactive_Elements) {
+                ie.Touched(t.identifier, t.pageX, t.pageY)
+            }
+        }
+    });
+
+    canvas.addEventListener("touchend", (evt) => {
+        evt.preventDefault();
+        for(const t of evt.changedTouches) {
+            delete Touches[t.identifier];
+            for(const ie of interactive_Elements) {
+                ie.reset(t.identifier);
+            }
+        }
+    });
+
+    canvas.addEventListener("touchmove", (evt) => {
+        evt.preventDefault();
+        for(const t of evt.changedTouches) {
+            Touches[t.identifier] = { x: t.pageX, y: t.pageY};
+            for(const ie of interactive_Elements) {
+                ie.move(t.identifier, t.pageX, t.pageY)
+            }
+        }
+    });
+
+
 }
