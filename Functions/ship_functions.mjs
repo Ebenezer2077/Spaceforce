@@ -34,7 +34,6 @@ export function createShip(canvas ,ctx, x1, y1) {
                 position[2] = tx;
                 position[3] = ty;
                 angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-                //Projectiles.push(newProjectile(position[0], position[1], 15, angle));
             }
         }
     }
@@ -67,7 +66,6 @@ export function createShip(canvas ,ctx, x1, y1) {
         ctx.translate(x,y);
         ctx.rotate(angle + (Math.PI/2));
         var sWidth = canvas.width;
-        var sHeight = canvas.height;
         var path = new Path2D();
         //triangle
         path.moveTo(sWidth/30, 0);                              //right

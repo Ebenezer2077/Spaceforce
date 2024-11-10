@@ -19,9 +19,5 @@ export function newProjectile( PosX, PosY, Velocity, Angle) {
             instanz.posy += Math.sin(instanz.angle)*instanz.velocity;
         }
     }
-
-
     return instanz;
-
-
 }
