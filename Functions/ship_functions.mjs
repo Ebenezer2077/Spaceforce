@@ -34,7 +34,7 @@ export function createShip(canvas ,ctx, x1, y1) {
                 position[2] = tx;
                 position[3] = ty;
                 angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-                Projectiles.push(newProjectile(position[0], position[1], 15, angle));
+                //Projectiles.push(newProjectile(position[0], position[1], 15, angle));
             }
         }
     }
@@ -51,9 +51,10 @@ export function createShip(canvas ,ctx, x1, y1) {
 
         if(identifierONE !== undefined && identifierTWO !== undefined) {
             angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
-            if(feuerrate_jetzt % Math.round(feuerrate_grenze/100) == 0) {
+            if(feuerrate_jetzt % Math.round((feuerrate_grenze)/65) == 0) {
                 Projectiles.push(newProjectile(position[0], position[1], 15, angle));
                 feuerrate_grenze = distance(position[0], position[1], position[2], position[3]);
+                feuerrate_jetzt = 1;
             }
             feuerrate_jetzt++;
         } 
