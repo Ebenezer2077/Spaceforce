@@ -24,9 +24,10 @@ export function asteroid(PosX, PosY, Velocity, Angle, TP) {
 
         register_collision: (Projectiles) => {
             for (let i = 0; i < Projectiles.length; i++) {
-                if(distance(elements.posx, elements.posy, instanz.posx, instanz.posy) < instanz.radius) {
+                if(distance(Projectiles[i].posx, Projectiles[i].posy, instanz.posx, instanz.posy) < instanz.radius) {
                     Projectiles.splice(i, 1);
                     i--;
+                    instanz.TP--;
                 }
             }
         }

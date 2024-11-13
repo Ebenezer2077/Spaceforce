@@ -1,6 +1,7 @@
 import * as lib from "./Functions/general.mjs"
 import * as ship from "./Functions/ship_functions.mjs"
 import * as ast from "./Interfaces/Asteroid.mjs"
+import * as GB from "./Functions/GarbageCollector.mjs"
 
 window.onload = () => {
     const { canvas, ctx} = lib.init("canvas_id");
@@ -11,7 +12,7 @@ window.onload = () => {
     const asteroids = [];
 
     //testing
-    let a = ast.asteroid(200, 600, 1, 0, 40, ctx);
+    let a = ast.asteroid(200, 600, 1, 0, 20);
     asteroids.push(a);
     //testing
 
@@ -22,7 +23,8 @@ window.onload = () => {
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
         lib.draw_background(ctx);
         let project = interactive_Elements[0].Projectiles;
-        console.log(project);
+
+        GB.check_TP(asteroids);
 
         for(const element of asteroids) {
             element.draw_instanz(ctx);
