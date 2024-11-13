@@ -1,5 +1,5 @@
 
-export function asteroid(PosX, PosY, Velocity, Angle, TP) {
+export function asteroid(PosX, PosY, Velocity, Angle, TP, Timestamp) {
     let instanz = {
         posx: PosX,
         posy: PosY,
@@ -7,6 +7,7 @@ export function asteroid(PosX, PosY, Velocity, Angle, TP) {
         angle: Angle,
         TP: TP,
         radius: TP*4,
+        timestamp: Timestamp,
 
         draw_instanz: (ctx) => {
             ctx.resetTransform();

@@ -2,6 +2,7 @@ import * as lib from "./Functions/general.mjs"
 import * as ship from "./Functions/ship_functions.mjs"
 import * as ast from "./Interfaces/Asteroid.mjs"
 import * as GB from "./Functions/GarbageCollector.mjs"
+import * as LL from "./Functions/LevelLoader.mjs"
 
 window.onload = () => {
     const { canvas, ctx} = lib.init("canvas_id");
@@ -9,16 +10,25 @@ window.onload = () => {
 
     const interactive_Elements = [];
     interactive_Elements.push(ship.createShip(canvas, ctx, 100, 100));
+    const allAsteroids = [] = LL.LoadLevel();
     const asteroids = [];
 
     //testing
-    let a = ast.asteroid(200, 600, 1, 0, 20);
-    asteroids.push(a);
+    asteroids.push(ast.asteroid(200, 600, 1, 0, 20, 200));
     //testing
 
     const Touches = {};
+    let TIMER = 0;
 
     function draw() {
+        TIMER++;
+        for(const element of allAsteroids) {
+            if(element.timestamp == TIMER) {
+                asteroids.push(element);
+            }
+        }
+
+
         ctx.resetTransform();
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
         lib.draw_background(ctx);
@@ -33,6 +43,7 @@ window.onload = () => {
             }
             element.draw_instanz(ctx);
             element.register_collision(project);
+            element.fly();
         }
 
         for(const ie of interactive_Elements) {
