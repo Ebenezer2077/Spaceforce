@@ -9,3 +9,9 @@ export function LoadLevel() {
 
     return Asteroids;
 }
+
+/*
+    Winkel Erläuterung:
+        - 1 => nach rechts unten
+        - 0 => nach rechts
+*/
