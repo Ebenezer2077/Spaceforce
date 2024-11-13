@@ -9,13 +9,10 @@ window.onload = () => {
     ctx.fillStyle = "#f00";
 
     const interactive_Elements = [];
-    interactive_Elements.push(ship.createShip(canvas, ctx, 100, 100));
+    interactive_Elements.push(ship.createShip(canvas, ctx, 300, 600));
     const allAsteroids = [] = LL.LoadLevel();
     const asteroids = [];
 
-    //testing
-    asteroids.push(ast.asteroid(200, 600, 1, 0, 20, 200));
-    //testing
 
     const Touches = {};
     let TIMER = 0;
@@ -37,7 +34,6 @@ window.onload = () => {
         GB.check_TP(asteroids);
 
         for(const element of asteroids) {
-            //GB.is_ship_hit(interactive_Elements[0].getCoordinates()[0], interactive_Elements[0].getCoordinates()[1],element);
             if(GB.is_ship_hit(interactive_Elements[0].getCoordinates()[0], interactive_Elements[0].getCoordinates()[1],element)) {
                 interactive_Elements.pop();
             }
