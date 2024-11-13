@@ -27,6 +27,10 @@ window.onload = () => {
         GB.check_TP(asteroids);
 
         for(const element of asteroids) {
+            //GB.is_ship_hit(interactive_Elements[0].getCoordinates()[0], interactive_Elements[0].getCoordinates()[1],element);
+            if(GB.is_ship_hit(interactive_Elements[0].getCoordinates()[0], interactive_Elements[0].getCoordinates()[1],element)) {
+                interactive_Elements.pop();
+            }
             element.draw_instanz(ctx);
             element.register_collision(project);
         }

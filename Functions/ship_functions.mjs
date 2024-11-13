@@ -97,8 +97,12 @@ export function createShip(canvas ,ctx, x1, y1) {
         }
     }
 
+    function getCoordinates() {
+        return position;
+    }
 
-    return { draw, Touched, move, reset, Projectiles };
+
+    return { draw, Touched, move, reset, Projectiles, getCoordinates };
 }
 
 
