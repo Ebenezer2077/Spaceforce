@@ -23,7 +23,7 @@ export function asteroid(PosX, PosY, Velocity, Angle, TP) {
         },
 
         register_collision: (Projectiles) => {
-            for(elements of Projectiles) {
+            for(const elements of Projectiles) {
                 if(distance(elements.posx, elements.posy, instanz.posx, instanz.posy) < instanz.radius) {
                     window.alert("HIT");
                 }
