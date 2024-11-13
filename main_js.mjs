@@ -1,5 +1,6 @@
 import * as lib from "./Functions/general.mjs"
 import * as ship from "./Functions/ship_functions.mjs"
+import * as ast from "./Interfaces/Asteroid.mjs"
 
 window.onload = () => {
     const { canvas, ctx} = lib.init("canvas_id");
@@ -7,6 +8,12 @@ window.onload = () => {
 
     const interactive_Elements = [];
     interactive_Elements.push(ship.createShip(canvas, ctx, 100, 100));
+    const asteroids = [];
+
+    //testing
+    let a = ast.asteroid(200, 600, 1, 0, 40, ctx);
+    asteroids.push(a);
+    //testing
 
     const Touches = {};
 
@@ -15,9 +22,14 @@ window.onload = () => {
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
         lib.draw_background(ctx);
 
+        for(const element of asteroids) {
+            element.draw_instanz(ctx);
+        }
+
         for(const ie of interactive_Elements) {
             ie.draw();
         }
+
         window.requestAnimationFrame(draw);
     }
     draw();
