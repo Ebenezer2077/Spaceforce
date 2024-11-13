@@ -98,7 +98,7 @@ export function createShip(canvas ,ctx, x1, y1) {
     }
 
 
-    return { draw, Touched, move, reset };
+    return { draw, Touched, move, reset, Projectiles };
 }
 
 

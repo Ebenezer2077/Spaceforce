@@ -21,9 +21,12 @@ window.onload = () => {
         ctx.resetTransform();
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
         lib.draw_background(ctx);
+        let project = interactive_Elements[0].Projectiles;
+        console.log(project);
 
         for(const element of asteroids) {
             element.draw_instanz(ctx);
+            element.register_collision(project);
         }
 
         for(const ie of interactive_Elements) {
