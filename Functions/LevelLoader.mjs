@@ -8,32 +8,35 @@ export function LoadLevel(canvas) {
 
     let position_randomizerX = (Math.random()-0.5)*10*unit;
     let position_randomizerY = (Math.random()-0.5)*10*unit;
-    let angle_randomizer = Math.random()*Math.PI*0.5;
-    let time_randomizer = (Math.random()-0.5)*50;
+    let angle_randomizer = Math.random()*Math.PI*0.1;
+    let time_randomizer = Math.round((Math.random()-0.5)*80);
 
     for(let lvl = 0; lvl <= 100; lvl++) {
-        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, 0-200 + position_randomizerY, 3, 1, 20, loopendtime + 100));                               //nach rechts unten
-        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, canvas.height+200 + position_randomizerY, 3, 4.2, 20,loopendtime + 300));      //nach links oben
-        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, (canvas.height/2)+200 + position_randomizerY, 3, 3, 12,loopendtime + 500));    //nach links
-        Asteroids.push(Asteroid.asteroid(canvas.width/2 + position_randomizerX, 0-200 + position_randomizerY, 3, 1.5, 25,loopendtime + 600));                   //nach unten
-        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, canvas.height+200 + position_randomizerY, 3, 5.5, 18,loopendtime + 800));                    //rechts oben
-        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, canvas.height*0.6 + position_randomizerY, 3, 3.1, 21,loopendtime + 850));
-        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, 0-200 + position_randomizerY, 3.5, 1.1, 18,loopendtime + 870));
-        Asteroids.push(Asteroid.asteroid(canvas.width/2 + position_randomizerX, canvas.height+200 + position_randomizerY, 2.5, (Math.PI/2)*3, 32,loopendtime + 1000));
-        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, 0-200 + position_randomizerY, 3, 1, 20,loopendtime + 1000));
-        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, 0-200 + position_randomizerY, 3, 2, 20,loopendtime + 1000));
-
-        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, canvas.height*0.4 + position_randomizerY, 4, 1, 20,loopendtime + 1050));
-        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, (canvas.height/2)+200 + position_randomizerY, 4, 3, 12,loopendtime + 1060)); 
-        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, canvas.height+200 + position_randomizerY, 4, 5.6, 11,loopendtime + 1070)); 
+        console.log(time_randomizer);
+        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, 0-200 + position_randomizerY, 3 + (lvl*0.5), 1 + angle_randomizer, 20, loopendtime + 100 + time_randomizer));                               //nach rechts unten
+        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, canvas.height+200 + position_randomizerY, 3 + (lvl*0.5), 4.2 + angle_randomizer, 20,loopendtime + 300 + time_randomizer));      //nach links oben
+        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, (canvas.height/2)+200 + position_randomizerY, 3 + (lvl*0.5), 3 + angle_randomizer, 12,loopendtime + 500 + time_randomizer));    //nach links
+        Asteroids.push(Asteroid.asteroid(canvas.width/2 + position_randomizerX, 0-200 + position_randomizerY, 3 + (lvl*0.5), 1.5 + angle_randomizer, 25,loopendtime + 600 + time_randomizer));                   //nach unten
+        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, canvas.height+200 + position_randomizerY, 3 + (lvl*0.5), 5.5 + angle_randomizer, 18,loopendtime + 800 + time_randomizer));                    //rechts oben
+        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, canvas.height*0.6 + position_randomizerY, 3 + (lvl*0.5), 3.1 + angle_randomizer, 21,loopendtime + 850 + time_randomizer));
+        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, 0-200 + position_randomizerY, 3.5 + (lvl*0.5), 1.1 + angle_randomizer, 18,loopendtime + 870 + time_randomizer));
+        Asteroids.push(Asteroid.asteroid(canvas.width/2 + position_randomizerX, canvas.height+200 + position_randomizerY, 2.5 + (lvl*0.5), (Math.PI/2)*3 + angle_randomizer, 32,loopendtime + 1000 + time_randomizer));
+        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, 0-200 + position_randomizerY, 3 + (lvl*0.5), 1 + angle_randomizer, 20,loopendtime + 1000 + time_randomizer));
+        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, 0-200 + position_randomizerY, 3 + (lvl*0.5), 2 + angle_randomizer, 20,loopendtime + 1000 + time_randomizer));
+        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, canvas.height*0.4 + position_randomizerY, 4 + (lvl*0.5), 1 + angle_randomizer, 20,loopendtime + 1050 + time_randomizer));
+        Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, (canvas.height/2)+200 + position_randomizerY, 4 + (lvl*0.5), 3 + angle_randomizer, 12,loopendtime + 1060 + time_randomizer)); 
+        Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, canvas.height+200 + position_randomizerY, 4 + (lvl*0.5), 5.6 + angle_randomizer, 11,loopendtime + 1070 + time_randomizer)); 
 
 
         position_randomizerX = (Math.random()-0.5)*10*unit;
         position_randomizerY = (Math.random()-0.5)*10*unit;
+        angle_randomizer = Math.random()*Math.PI*0.1;
+        time_randomizer = Math.round((Math.random()-0.5)*80);
         loopendtime += 1070;
 
     }
 
+    endtime = loopendtime + 1000;
 
     /*
     Winkel Erläuterung:
