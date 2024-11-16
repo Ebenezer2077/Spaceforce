@@ -32,6 +32,8 @@ window.onload = () => {
         let project = interactive_Elements[0].Projectiles;
 
         GB.check_TP(asteroids);
+        GB.is_in_canvas(canvas, asteroids);
+        GB.is_in_canvas(canvas, project);
 
         for(const element of asteroids) {
             if(GB.is_ship_hit(interactive_Elements[0].getCoordinates()[0], interactive_Elements[0].getCoordinates()[1],element)) {

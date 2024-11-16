@@ -17,6 +17,15 @@ export function is_ship_hit(shipX, shipY, Asteroid) {
     return false;
 }
 
+export function is_in_canvas(canvas, Objects) {
+    for (let i = 0; i < Objects.length; i++) {
+        if(Objects[i].posx < 0-canvas.width || Objects[i].posx > 2*canvas.width || Objects[i].posy < 0-canvas.height || Objects[i].posy > 2*canvas.height) {
+            Objects.splice(i, 1);
+            i--;
+        }
+    }
+}
+
 function distance(x, y, tx, ty) {
     const dx = tx - x;
     const dy = ty - y;
