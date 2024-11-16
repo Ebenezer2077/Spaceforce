@@ -50,6 +50,7 @@ window.onload = () => {
         for(const ie of interactive_Elements) {
             ie.draw();
         }
+        /*
         
         ctx.save();
         ctx.resetTransform();
@@ -57,6 +58,8 @@ window.onload = () => {
         ctx.font = "30px serif";
         ctx.fillText("Score: " + TIMER, 10, 50);
         ctx.restore();
+        */
+       lib.draw_HUD(ctx, TIMER, 250, 10);
 
         window.requestAnimationFrame(draw);
     }
