@@ -10,7 +10,7 @@ window.onload = () => {
 
     const interactive_Elements = [];
     interactive_Elements.push(ship.createShip(canvas, ctx, 300, 600));
-    const allAsteroids = [] = LL.LoadLevel();
+    const allAsteroids = [] = LL.LoadLevel(canvas);
     const asteroids = [];
 
 
@@ -19,6 +19,7 @@ window.onload = () => {
 
     function draw() {
         TIMER++;
+
         for(const element of allAsteroids) {
             if(element.timestamp == TIMER) {
                 asteroids.push(element);
@@ -27,8 +28,10 @@ window.onload = () => {
 
 
         ctx.resetTransform();
+
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
         lib.draw_background(ctx);
+
         let project = interactive_Elements[0].Projectiles;
 
         GB.check_TP(asteroids);
@@ -47,6 +50,13 @@ window.onload = () => {
         for(const ie of interactive_Elements) {
             ie.draw();
         }
+        
+        ctx.save();
+        ctx.resetTransform();
+
+        ctx.font = "30px serif";
+        ctx.fillText("Score: " + TIMER, 10, 50);
+        ctx.restore();
 
         window.requestAnimationFrame(draw);
     }
