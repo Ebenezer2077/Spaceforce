@@ -60,14 +60,6 @@ export function createShip(canvas ,ctx, x1, y1) {
                     feuerrate_jetzt = 1;
                     HEAT+= 1.5;
                     jammed = HEAT > 100;
-                } else {
-                    jammed_cooldown--;
-                    jammed = jammed_cooldown > 0;
-                    //window.alert(jammed_cooldown);
-                    if(!jammed) {
-                        //window.alert("jamm ending");
-                        jammed_cooldown = 200;
-                    }
                 }
             }
             feuerrate_jetzt++;
@@ -100,6 +92,16 @@ export function createShip(canvas ,ctx, x1, y1) {
 
         ctx.fill(path);                                         //End figure
         PATH = path;
+
+        
+        if(jammed) {
+            jammed_cooldown--;
+            jammed = jammed_cooldown > 0;
+            if(!jammed) {
+                jammed_cooldown = 200;
+            }
+        }
+            
     }
 
     function reset(id) {
