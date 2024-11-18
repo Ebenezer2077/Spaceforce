@@ -60,7 +60,7 @@ window.onload = () => {
         ctx.fillText("Score: " + TIMER, 10, 50);
         ctx.restore();
         */
-        lib.draw_HUD(ctx, canvas, TIMER, 400, interactive_Elements[0].getHeat(), interactive_Elements[0].isJammed());
+        lib.draw_HUD(ctx, canvas, TIMER, 100, interactive_Elements[0].getHeat(), interactive_Elements[0].isJammed());
         
         interactive_Elements[0].cooldown();
 

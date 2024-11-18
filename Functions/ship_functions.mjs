@@ -58,12 +58,14 @@ export function createShip(canvas ,ctx, x1, y1) {
                     Projectiles.push(newProjectile(position[0], position[1], 15, angle));
                     feuerrate_grenze = distance(position[0], position[1], position[2], position[3]);
                     feuerrate_jetzt = 1;
-                    HEAT+= 6;
-                    jammed = HEAT > 400;
+                    HEAT+= 1.5;
+                    jammed = HEAT > 100;
                 } else {
                     jammed_cooldown--;
                     jammed = jammed_cooldown > 0;
+                    //window.alert(jammed_cooldown);
                     if(!jammed) {
+                        //window.alert("jamm ending");
                         jammed_cooldown = 200;
                     }
                 }
@@ -120,7 +122,7 @@ export function createShip(canvas ,ctx, x1, y1) {
 
     function cooldown() {
         if(HEAT > 0) {
-            HEAT -= 2;
+            HEAT -= 0.5;
         }
     }
 
