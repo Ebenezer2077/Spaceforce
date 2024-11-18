@@ -16,6 +16,7 @@ window.onload = () => {
 
     const Touches = {};
     let TIMER = 0;
+    let HEAT = 0;
 
     function draw() {
         TIMER++;
@@ -59,7 +60,9 @@ window.onload = () => {
         ctx.fillText("Score: " + TIMER, 10, 50);
         ctx.restore();
         */
-       lib.draw_HUD(ctx, canvas, TIMER, 400, 200);
+       lib.draw_HUD(ctx, canvas, TIMER, 400, interactive_Elements[0].getHeat());
+
+       interactive_Elements[0].cooldown();
 
         window.requestAnimationFrame(draw);
     }

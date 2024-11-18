@@ -10,6 +10,7 @@ export function createShip(canvas ,ctx, x1, y1) {
     let Projectiles = [];                                                   //zum speichern der Projekktile des Schiffes
     let feuerrate_jetzt = 1;
     let feuerrate_grenze = 100;
+    let HEAT = 0;
 
 
     function draw() {
@@ -54,6 +55,7 @@ export function createShip(canvas ,ctx, x1, y1) {
                 Projectiles.push(newProjectile(position[0], position[1], 15, angle));
                 feuerrate_grenze = distance(position[0], position[1], position[2], position[3]);
                 feuerrate_jetzt = 1;
+                HEAT+= 6;
             }
             feuerrate_jetzt++;
         } 
@@ -101,8 +103,18 @@ export function createShip(canvas ,ctx, x1, y1) {
         return position;
     }
 
+    function getHeat() {
+        return HEAT;
+    }
 
-    return { draw, Touched, move, reset, Projectiles, getCoordinates };
+    function cooldown() {
+        if(HEAT > 0) {
+            HEAT -= 2;
+        }
+    }
+
+
+    return { draw, Touched, move, reset, Projectiles, getCoordinates, getHeat, cooldown};
 }
 
 
