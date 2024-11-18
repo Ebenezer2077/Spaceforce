@@ -59,7 +59,7 @@ window.onload = () => {
         ctx.fillText("Score: " + TIMER, 10, 50);
         ctx.restore();
         */
-       lib.draw_HUD(ctx, TIMER, 250, 10);
+       lib.draw_HUD(ctx, canvas, TIMER, 400, 200);
 
         window.requestAnimationFrame(draw);
     }
