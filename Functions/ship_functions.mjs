@@ -10,6 +10,9 @@ export function createShip(canvas ,ctx, x1, y1) {
     let Projectiles = [];                                                   //zum speichern der Projekktile des Schiffes
     let feuerrate_jetzt = 1;
     let feuerrate_grenze = 100;
+    let HEAT = 0;
+    let jammed = false;
+    let jammed_cooldown = 200;
 
 
     function draw() {
@@ -51,9 +54,13 @@ export function createShip(canvas ,ctx, x1, y1) {
         if(identifierONE !== undefined && identifierTWO !== undefined) {
             angle = Math.atan2(position[3] - position[1], position[2] - position[0]);
             if(feuerrate_jetzt % Math.round((feuerrate_grenze)/65) == 0) {
-                Projectiles.push(newProjectile(position[0], position[1], 15, angle));
-                feuerrate_grenze = distance(position[0], position[1], position[2], position[3]);
-                feuerrate_jetzt = 1;
+                if(!jammed) {
+                    Projectiles.push(newProjectile(position[0], position[1], 15, angle));
+                    feuerrate_grenze = distance(position[0], position[1], position[2], position[3]);
+                    feuerrate_jetzt = 1;
+                    HEAT+= 1.5;
+                    jammed = HEAT > 100;
+                }
             }
             feuerrate_jetzt++;
         } 
@@ -85,6 +92,16 @@ export function createShip(canvas ,ctx, x1, y1) {
 
         ctx.fill(path);                                         //End figure
         PATH = path;
+
+        
+        if(jammed) {
+            jammed_cooldown--;
+            jammed = jammed_cooldown > 0;
+            if(!jammed) {
+                jammed_cooldown = 200;
+            }
+        }
+            
     }
 
     function reset(id) {
@@ -101,8 +118,22 @@ export function createShip(canvas ,ctx, x1, y1) {
         return position;
     }
 
+    function getHeat() {
+        return HEAT;
+    }
 
-    return { draw, Touched, move, reset, Projectiles, getCoordinates };
+    function cooldown() {
+        if(HEAT > 0) {
+            HEAT -= 0.5;
+        }
+    }
+
+    function isJammed() {
+        return jammed;
+    }
+
+
+    return { draw, Touched, move, reset, Projectiles, getCoordinates, getHeat, cooldown, isJammed};
 }
 
 
