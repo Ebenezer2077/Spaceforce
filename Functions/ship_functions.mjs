@@ -223,12 +223,25 @@ export function createShip(canvas ,ctx, x1, y1) {
     }
 
     function computeCoordinates(Tx, Ty) {
-        let newy = inverseMatrix.a * Tx + inverseMatrix.c * Ty + inverseMatrix.e;
-        let newx = inverseMatrix.b * Tx + inverseMatrix.d * Ty + inverseMatrix.f; 
-        //console.log(newx, (-1)*newy);
-        return [newx, (-1)*newy];
-        //works 
-        //Hitboxborders wird auch geupdatet           
+        //let newX = position[0] + Tx * Math.cos(angle) - Ty * Math.sin(angle);
+        //let newY = position[1] + Tx * Math.sin(angle) + Ty * Math.sin(angle);
+
+        // Translation zum Ursprung
+
+
+        // Rotation um den Ursprung
+        const cos = Math.cos(angle + (Math.PI/2));
+        const sin = Math.sin(angle + (Math.PI/2));
+
+        const rotatedX = cos * Tx - sin * Ty;
+        const rotatedY = sin * Tx + cos * Ty;
+
+        // Translation zurück
+        const finalX = rotatedX + position[0];
+        const finalY = rotatedY + position[1];
+
+        return [finalX, finalY];
+                
     }
 
     function getCoordinates() {
