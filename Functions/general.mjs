@@ -27,6 +27,7 @@ export function draw_HUD(ctx, canvas, TIMER, currentHeat, jammed) {
     ctx.resetTransform();
 
     ctx.font = "30px serif";
+    ctx.fillStyle = "white";
     ctx.fillText("Score: " + TIMER, 10, 50);
     if(jammed) {
         if(TIMER % 20 > 10) {

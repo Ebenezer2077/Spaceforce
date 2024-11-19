@@ -10,7 +10,7 @@ export function newProjectile( PosX, PosY, Velocity, Angle) {
             ctx.translate(instanz.posx, instanz.posy);
             ctx.beginPath();
             ctx.arc(0, 0, 10, 0, 2 * Math.PI);
-            ctx.fillStyle = "blue";
+            ctx.fillStyle = "red";
             ctx.fill();
             ctx.resetTransform();
         },

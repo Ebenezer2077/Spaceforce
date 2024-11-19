@@ -71,7 +71,9 @@ export function createShip(canvas ,ctx, x1, y1) {
 
     function draw_spaceship(x,y) {
         ctx.resetTransform();
-        ctx.fillStyle = "red";
+        ctx.lineWidth = 3;
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = "red";
         
         ctx.translate(x,y);
         ctx.rotate(angle + (Math.PI/2));
@@ -165,12 +167,13 @@ export function createShip(canvas ,ctx, x1, y1) {
         path.lineTo(3*unit, -6*unit);                                    //2
         HitboxBorders[28] = computeCoordinates(3*unit, -6*unit);
 
-        path.moveTo(1*unit, -10*unit);                                   //1
+        path.lineTo(1*unit, -10*unit);                                   //1
         HitboxBorders[29] = computeCoordinates(1*unit, -10*unit);
 
-        path.moveTo(-1*unit, -10*unit);                                  //1
-
+        path.lineTo(-1*unit, -10*unit);                                  //1
+        //ctx.closePath(path);
         ctx.fill(path);                                         //End figure
+        ctx.stroke(path);
         PATH = path;
 
         if(jammed) {
