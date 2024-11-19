@@ -12,6 +12,7 @@ export function newProjectile( PosX, PosY, Velocity, Angle) {
             ctx.arc(0, 0, 10, 0, 2 * Math.PI);
             ctx.fillStyle = "blue";
             ctx.fill();
+            ctx.resetTransform();
         },
 
         fly: () => {
