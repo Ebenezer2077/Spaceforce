@@ -31,7 +31,7 @@ window.onload = () => {
         ctx.resetTransform();
 
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
-        lib.draw_background(ctx);
+        //lib.draw_background(ctx);
 
         let project = interactive_Elements[0].Projectiles;
 
@@ -40,7 +40,7 @@ window.onload = () => {
         GB.is_in_canvas(canvas, project);
 
         for(const element of asteroids) {
-            if(GB.is_ship_hit(interactive_Elements[0].getCoordinates()[0], interactive_Elements[0].getCoordinates()[1],element)) {
+            if(GB.is_ship_hit(interactive_Elements[0].getHitbox(),element)) {
                 interactive_Elements.pop();
             }
             element.draw_instanz(ctx);
@@ -63,6 +63,15 @@ window.onload = () => {
         lib.draw_HUD(ctx, canvas, TIMER, 100, interactive_Elements[0].getHeat(), interactive_Elements[0].isJammed());
         
         interactive_Elements[0].cooldown();
+
+        //Debugging
+        for(let element of interactive_Elements[0].getHitbox()) {
+            ctx.fillStyle = "blue";
+            ctx.beginPath();
+            ctx.arc(element[0], element[1], 40, 0, 2 * Math.PI);
+            ctx.stroke();
+        }
+        //Debugging
 
         window.requestAnimationFrame(draw);
     }
