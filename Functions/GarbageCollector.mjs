@@ -17,7 +17,6 @@ export function is_ship_hit(Hitbox ,Asteroid) {
         }
     }
     return false;
-
 }
 
 export function is_in_canvas(canvas, Objects) {
