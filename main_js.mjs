@@ -31,7 +31,7 @@ window.onload = () => {
         ctx.resetTransform();
 
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
-        //lib.draw_background(ctx);
+        lib.draw_background(ctx);
 
         let project = interactive_Elements[0].Projectiles;
 
@@ -51,25 +51,27 @@ window.onload = () => {
         for(const ie of interactive_Elements) {
             ie.draw();
         }
-        /*
         
-        ctx.save();
-        ctx.resetTransform();
-
-        ctx.font = "30px serif";
-        ctx.fillText("Score: " + TIMER, 10, 50);
-        ctx.restore();
-        */
+   
         lib.draw_HUD(ctx, canvas, TIMER, 100, interactive_Elements[0].getHeat(), interactive_Elements[0].isJammed());
         
         interactive_Elements[0].cooldown();
 
         //Debugging
         for(let element of interactive_Elements[0].getHitbox()) {
+            if(TIMER % 100 == 0) {
+                console.log(element);
+                //WIRD UPGEDATET!!!
+            }
+            ctx.save();
+            ctx.resetTransform();
+
             ctx.fillStyle = "blue";
             ctx.beginPath();
-            ctx.arc(element[0], element[1], 40, 0, 2 * Math.PI);
-            ctx.stroke();
+            ctx.arc(element[0], element[1], 4, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.restore();
         }
         //Debugging
 

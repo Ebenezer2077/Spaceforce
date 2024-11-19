@@ -178,7 +178,6 @@ export function createShip(canvas ,ctx, x1, y1) {
         path.moveTo(-1*unit, -10*unit);                                  //1
 
 
-
         /* old design
         var sWidth = canvas.width;
         var path = new Path2D();
@@ -224,9 +223,12 @@ export function createShip(canvas ,ctx, x1, y1) {
     }
 
     function computeCoordinates(Tx, Ty) {
-        let x = inverseMatrix.a * Tx + inverseMatrix.c * Ty + inverseMatrix.e;
-        let y = inverseMatrix.b * Tx + inverseMatrix.d * Ty + inverseMatrix.f;
-        return [x,y];               
+        let newy = inverseMatrix.a * Tx + inverseMatrix.c * Ty + inverseMatrix.e;
+        let newx = inverseMatrix.b * Tx + inverseMatrix.d * Ty + inverseMatrix.f; 
+        //console.log(newx, (-1)*newy);
+        return [newx, (-1)*newy];
+        //works 
+        //Hitboxborders wird auch geupdatet           
     }
 
     function getCoordinates() {
