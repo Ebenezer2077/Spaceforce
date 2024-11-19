@@ -13,11 +13,9 @@ export function createShip(canvas ,ctx, x1, y1) {
     let HEAT = 0;
     let jammed = false;
     let jammed_cooldown = 200;
-
     let unit = canvas.width/200;
-
     let HitboxBorders = [];
-    let inverseMatrix;
+
 
 
     function draw() {
@@ -77,11 +75,6 @@ export function createShip(canvas ,ctx, x1, y1) {
         
         ctx.translate(x,y);
         ctx.rotate(angle + (Math.PI/2));
-        inverseMatrix = ctx.getTransform().inverse();
-
-
-    
-
 
         var path = new Path2D();
 
@@ -177,39 +170,16 @@ export function createShip(canvas ,ctx, x1, y1) {
 
         path.moveTo(-1*unit, -10*unit);                                  //1
 
-
-        /* old design
-        var sWidth = canvas.width;
-        var path = new Path2D();
-        //triangle
-        path.moveTo(sWidth/30, 0);                              //right
-        path.lineTo(0, -sWidth/12);                             //top
-        path.lineTo(-sWidth/30, 0);                             //left
-
-        //rectangle
-        path.lineTo(-sWidth/30, sWidth/9);                      //left-bottom           
-        path.lineTo(sWidth/30, sWidth/9);                       //right-bottom
-
-        //Wing
-        path.lineTo(sWidth/9, sWidth/9);                        //right-wing
-        path.lineTo(sWidth/9, sWidth/7); 
-        path.lineTo(-sWidth/9, sWidth/7);                       //left-wing
-        path.lineTo(-sWidth/9, sWidth/9);
-        path.lineTo(sWidth/30, sWidth/9);
-        */
-
         ctx.fill(path);                                         //End figure
         PATH = path;
 
-        
         if(jammed) {
             jammed_cooldown--;
             jammed = jammed_cooldown > 0;
             if(!jammed) {
                 jammed_cooldown = 200;
             }
-        }
-            
+        }      
     }
 
     function reset(id) {
@@ -223,12 +193,6 @@ export function createShip(canvas ,ctx, x1, y1) {
     }
 
     function computeCoordinates(Tx, Ty) {
-        //let newX = position[0] + Tx * Math.cos(angle) - Ty * Math.sin(angle);
-        //let newY = position[1] + Tx * Math.sin(angle) + Ty * Math.sin(angle);
-
-        // Translation zum Ursprung
-
-
         // Rotation um den Ursprung
         const cos = Math.cos(angle + (Math.PI/2));
         const sin = Math.sin(angle + (Math.PI/2));

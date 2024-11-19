@@ -8,15 +8,7 @@ export function check_TP(Asteroids) {
     }
 }
 
-export function is_ship_hit(/*shipX, shipY,*/Hitbox ,Asteroid) {
-    /*
-    if(distance(shipX, shipY, Asteroid.posx, Asteroid.posy) < Asteroid.radius) {
-        window.alert("Game over");
-        window.location.reload();
-        return true;
-    }
-    return false;
-    */
+export function is_ship_hit(Hitbox ,Asteroid) {
     for(let element of Hitbox) {
         if(distance(element[0], element[1], Asteroid.posx, Asteroid.posy) < Asteroid.radius) {
             window.alert("Game over");

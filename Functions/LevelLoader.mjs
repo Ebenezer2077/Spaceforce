@@ -134,11 +134,6 @@ export function LoadLevel(canvas) {
     Asteroids.push(Asteroid.asteroid(42*unit, -3*unit, 2, Math.PI/2, unit/8, endtime));
     Asteroids.push(Asteroid.asteroid(42*unit, -1*unit, 2, Math.PI/2, unit/8, endtime));
 
-
-
-
-    
-
     return Asteroids;
 }
 

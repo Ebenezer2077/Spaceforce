@@ -33,7 +33,6 @@ export function asteroid(PosX, PosY, Velocity, Angle, TP, Timestamp) {
                 }
             }
         }
-
     }
 
     function distance(x, y, tx, ty) {
