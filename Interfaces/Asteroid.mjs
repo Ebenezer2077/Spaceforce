@@ -16,6 +16,7 @@ export function asteroid(PosX, PosY, Velocity, Angle, TP, Timestamp) {
             ctx.arc(0, 0, TP*4, 0, 2 * Math.PI);
             ctx.fillStyle = "grey";
             ctx.fill();
+            ctx.resetTransform();
         },
 
         fly: () => {
@@ -32,7 +33,6 @@ export function asteroid(PosX, PosY, Velocity, Angle, TP, Timestamp) {
                 }
             }
         }
-
     }
 
     function distance(x, y, tx, ty) {

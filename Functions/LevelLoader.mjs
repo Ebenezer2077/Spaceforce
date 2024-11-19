@@ -12,7 +12,6 @@ export function LoadLevel(canvas) {
     let time_randomizer = Math.round((Math.random()-0.5)*80);
 
     for(let lvl = 0; lvl <= 100; lvl++) {
-        console.log(time_randomizer);
         Asteroids.push(Asteroid.asteroid(0-200 + position_randomizerX, 0-200 + position_randomizerY, 3 + (lvl*0.5), 1 + angle_randomizer, 20, loopendtime + 100 + time_randomizer));                               //nach rechts unten
         Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, canvas.height+200 + position_randomizerY, 3 + (lvl*0.5), 4.2 + angle_randomizer, 20,loopendtime + 300 + time_randomizer));      //nach links oben
         Asteroids.push(Asteroid.asteroid(canvas.width+200 + position_randomizerX, (canvas.height/2)+200 + position_randomizerY, 3 + (lvl*0.5), 3 + angle_randomizer, 12,loopendtime + 500 + time_randomizer));    //nach links
@@ -134,11 +133,6 @@ export function LoadLevel(canvas) {
     Asteroids.push(Asteroid.asteroid(42*unit, -4*unit, 2, Math.PI/2, unit/8, endtime));
     Asteroids.push(Asteroid.asteroid(42*unit, -3*unit, 2, Math.PI/2, unit/8, endtime));
     Asteroids.push(Asteroid.asteroid(42*unit, -1*unit, 2, Math.PI/2, unit/8, endtime));
-
-
-
-
-    
 
     return Asteroids;
 }

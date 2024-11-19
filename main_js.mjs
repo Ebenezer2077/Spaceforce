@@ -8,15 +8,13 @@ window.onload = () => {
     const { canvas, ctx} = lib.init("canvas_id");
     ctx.fillStyle = "#f00";
 
-    const interactive_Elements = [];
-    interactive_Elements.push(ship.createShip(canvas, ctx, 300, 600));
+    const Spaceship = ship.createShip(canvas, ctx, 300, 600);
     const allAsteroids = [] = LL.LoadLevel(canvas);
     const asteroids = [];
 
 
     const Touches = {};
     let TIMER = 0;
-    let HEAT = 0;
 
     function draw() {
         TIMER++;
@@ -33,36 +31,27 @@ window.onload = () => {
         ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
         lib.draw_background(ctx);
 
-        let project = interactive_Elements[0].Projectiles;
+        let project = Spaceship.Projectiles;
 
         GB.check_TP(asteroids);
         GB.is_in_canvas(canvas, asteroids);
         GB.is_in_canvas(canvas, project);
 
         for(const element of asteroids) {
-            if(GB.is_ship_hit(interactive_Elements[0].getCoordinates()[0], interactive_Elements[0].getCoordinates()[1],element)) {
-                interactive_Elements.pop();
+            if(GB.is_ship_hit(Spaceship.getHitbox(),element)) {
+                Spaceship = undefined;
             }
             element.draw_instanz(ctx);
             element.register_collision(project);
             element.fly();
         }
 
-        for(const ie of interactive_Elements) {
-            ie.draw();
-        }
-        /*
+        Spaceship.draw();
         
-        ctx.save();
-        ctx.resetTransform();
-
-        ctx.font = "30px serif";
-        ctx.fillText("Score: " + TIMER, 10, 50);
-        ctx.restore();
-        */
-        lib.draw_HUD(ctx, canvas, TIMER, 100, interactive_Elements[0].getHeat(), interactive_Elements[0].isJammed());
+   
+        lib.draw_HUD(ctx, canvas, TIMER, Spaceship.getHeat(), Spaceship.isJammed());
         
-        interactive_Elements[0].cooldown();
+        Spaceship.cooldown();
 
         window.requestAnimationFrame(draw);
     }
@@ -72,9 +61,7 @@ window.onload = () => {
         evt.preventDefault();
         for(const t of evt.changedTouches) {
             Touches[t.identifier] = { x: t.pageX, y: t.pageY};
-            for(const ie of interactive_Elements) {
-                ie.Touched(t.identifier, t.pageX, t.pageY)
-            }
+            Spaceship.Touched(t.identifier, t.pageX, t.pageY);
         }
     });
 
@@ -82,9 +69,7 @@ window.onload = () => {
         evt.preventDefault();
         for(const t of evt.changedTouches) {
             delete Touches[t.identifier];
-            for(const ie of interactive_Elements) {
-                ie.reset(t.identifier);
-            }
+            Spaceship.reset(t.identifier);
         }
     });
 
@@ -92,9 +77,7 @@ window.onload = () => {
         evt.preventDefault();
         for(const t of evt.changedTouches) {
             Touches[t.identifier] = { x: t.pageX, y: t.pageY};
-            for(const ie of interactive_Elements) {
-                ie.move(t.identifier, t.pageX, t.pageY)
-            }
+            Spaceship.move(t.identifier, t.pageX, t.pageY);
         }
     });
 

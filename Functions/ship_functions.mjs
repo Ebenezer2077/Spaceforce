@@ -13,6 +13,9 @@ export function createShip(canvas ,ctx, x1, y1) {
     let HEAT = 0;
     let jammed = false;
     let jammed_cooldown = 200;
+    let unit = canvas.width/200;
+    let HitboxBorders = [];
+
 
 
     function draw() {
@@ -68,40 +71,118 @@ export function createShip(canvas ,ctx, x1, y1) {
 
     function draw_spaceship(x,y) {
         ctx.resetTransform();
-        ctx.fillStyle = "red";
+        ctx.lineWidth = 3;
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = "red";
         
         ctx.translate(x,y);
         ctx.rotate(angle + (Math.PI/2));
-        var sWidth = canvas.width;
+
         var path = new Path2D();
-        //triangle
-        path.moveTo(sWidth/30, 0);                              //right
-        path.lineTo(0, -sWidth/12);                             //top
-        path.lineTo(-sWidth/30, 0);                             //left
 
-        //rectangle
-        path.lineTo(-sWidth/30, sWidth/9);                      //left-bottom           
-        path.lineTo(sWidth/30, sWidth/9);                       //right-bottom
+        path.moveTo(-1*unit, -10*unit);                                   //1
+        HitboxBorders[0] = computeCoordinates(-1*unit, -10*unit);
 
-        //Wing
-        path.lineTo(sWidth/9, sWidth/9);                        //right-wing
-        path.lineTo(sWidth/9, sWidth/7); 
-        path.lineTo(-sWidth/9, sWidth/7);                       //left-wing
-        path.lineTo(-sWidth/9, sWidth/9);
-        path.lineTo(sWidth/30, sWidth/9);
+        path.lineTo(-3*unit, -6*unit);                                    //2
+        HitboxBorders[1] = computeCoordinates(-3*unit, -6*unit);
 
+        path.lineTo(-5*unit, 0*unit);                                     //3
+        HitboxBorders[2] = computeCoordinates(-5*unit, 0*unit);
+
+        path.lineTo(-5*unit, 8*unit);                                     //4
+        HitboxBorders[3] = computeCoordinates(-5*unit, 8*unit);
+
+        path.lineTo(-5*unit, 18*unit);                                    //5 
+        HitboxBorders[4] = computeCoordinates(-5*unit, 18*unit);
+
+        path.lineTo(-21*unit, 24*unit);                                   //6
+        HitboxBorders[5] = computeCoordinates(-21*unit, 24*unit);
+
+        path.lineTo(-27*unit, 20*unit);                                   //7
+        HitboxBorders[6] = computeCoordinates(-27*unit, 20*unit);
+
+        path.lineTo(-31*unit, 24*unit);                                   //8
+        HitboxBorders[7] = computeCoordinates(-31*unit, 24*unit);
+
+        path.lineTo(-29*unit, 28*unit);                                   //9
+        HitboxBorders[8] = computeCoordinates(-29*unit, 28*unit);
+
+        path.lineTo(-17*unit, 28*unit);                                   //10
+        HitboxBorders[9] = computeCoordinates(-17*unit, 28*unit);
+
+        path.lineTo(-5*unit, 28*unit);                                    //11
+        HitboxBorders[10] = computeCoordinates(-5*unit, 28*unit);
+
+        path.lineTo(-5*unit, 32*unit);                                    //12
+        HitboxBorders[11] = computeCoordinates(-5*unit, 32*unit);
+
+        path.lineTo(-3*unit, 32*unit);                                    //13
+        HitboxBorders[12] = computeCoordinates(-3*unit, 32*unit);
+
+        path.lineTo(-2*unit, 36*unit);                                    //14
+        HitboxBorders[13] = computeCoordinates(-2*unit, 36*unit);
+
+        path.lineTo(-1*unit, 32*unit);                                    //15
+        HitboxBorders[14] = computeCoordinates(-1*unit, 32*unit);
+        
+        path.lineTo(1*unit, 32*unit);                                    //15
+        HitboxBorders[15] = computeCoordinates(1*unit, 32*unit);
+
+        path.lineTo(2*unit, 36*unit);                                    //14
+        HitboxBorders[16] = computeCoordinates(2*unit, 36*unit);
+
+        path.lineTo(3*unit, 32*unit);                                    //13
+        HitboxBorders[17] = computeCoordinates(3*unit, 32*unit);
+
+        path.lineTo(5*unit, 32*unit);                                    //12
+        HitboxBorders[18] = computeCoordinates(5*unit, 32*unit);
+
+        path.lineTo(5*unit, 28*unit);                                    //11
+        HitboxBorders[19] = computeCoordinates(5*unit, 28*unit);
+
+        path.lineTo(17*unit, 28*unit);                                   //10
+        HitboxBorders[20] = computeCoordinates(17*unit, 28*unit);
+
+        path.lineTo(29*unit, 28*unit);                                   //9
+        HitboxBorders[21] = computeCoordinates(29*unit, 28*unit);
+
+        path.lineTo(31*unit, 24*unit);                                   //8
+        HitboxBorders[22] = computeCoordinates(31*unit, 24*unit);
+
+        path.lineTo(27*unit, 20*unit);                                   //7
+        HitboxBorders[23] = computeCoordinates(27*unit, 20*unit);
+
+        path.lineTo(21*unit, 24*unit);                                   //6
+        HitboxBorders[24] = computeCoordinates(21*unit, 24*unit);
+
+        path.lineTo(5*unit, 18*unit);                                    //5
+        HitboxBorders[25] = computeCoordinates(5*unit, 18*unit);
+
+        path.lineTo(5*unit, 8*unit);                                     //4
+        HitboxBorders[26] = computeCoordinates(5*unit, 8*unit);
+
+        path.lineTo(5*unit, 0*unit);                                     //3
+        HitboxBorders[27] = computeCoordinates(5*unit, 0*unit);
+
+        path.lineTo(3*unit, -6*unit);                                    //2
+        HitboxBorders[28] = computeCoordinates(3*unit, -6*unit);
+
+        path.lineTo(1*unit, -10*unit);                                   //1
+        HitboxBorders[29] = computeCoordinates(1*unit, -10*unit);
+
+        path.lineTo(-1*unit, -10*unit);                                  //1
+        //ctx.closePath(path);
         ctx.fill(path);                                         //End figure
+        ctx.stroke(path);
         PATH = path;
 
-        
         if(jammed) {
             jammed_cooldown--;
             jammed = jammed_cooldown > 0;
             if(!jammed) {
                 jammed_cooldown = 200;
             }
-        }
-            
+        }      
     }
 
     function reset(id) {
@@ -112,6 +193,22 @@ export function createShip(canvas ,ctx, x1, y1) {
         if(id === identifierTWO) {
             identifierTWO = undefined;
         }
+    }
+
+    function computeCoordinates(Tx, Ty) {
+        // Rotation um den Ursprung
+        const cos = Math.cos(angle + (Math.PI/2));
+        const sin = Math.sin(angle + (Math.PI/2));
+
+        const rotatedX = cos * Tx - sin * Ty;
+        const rotatedY = sin * Tx + cos * Ty;
+
+        // Translation zurück
+        const finalX = rotatedX + position[0];
+        const finalY = rotatedY + position[1];
+
+        return [finalX, finalY];
+                
     }
 
     function getCoordinates() {
@@ -132,8 +229,12 @@ export function createShip(canvas ,ctx, x1, y1) {
         return jammed;
     }
 
+    function getHitbox() {
+        return HitboxBorders;
+    }
 
-    return { draw, Touched, move, reset, Projectiles, getCoordinates, getHeat, cooldown, isJammed};
+
+    return { draw, Touched, move, reset, Projectiles, getCoordinates, getHeat, cooldown, isJammed, getHitbox};
 }
 
 
