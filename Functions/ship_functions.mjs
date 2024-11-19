@@ -14,6 +14,8 @@ export function createShip(canvas ,ctx, x1, y1) {
     let jammed = false;
     let jammed_cooldown = 200;
 
+    let unit = canvas.width/200;
+
 
     function draw() {
         draw_spaceship(position[0], position[1]);
@@ -72,6 +74,44 @@ export function createShip(canvas ,ctx, x1, y1) {
         
         ctx.translate(x,y);
         ctx.rotate(angle + (Math.PI/2));
+
+
+        var path = new Path2D();
+        path.moveTo(-1*unit, -10*unit);                                   //1
+        path.lineTo(-3*unit, -6*unit);                                    //2
+        path.lineTo(-5*unit, 0*unit);                                     //3
+        path.lineTo(-5*unit, 8*unit);                                     //4
+        path.lineTo(-5*unit, 18*unit);                                    //5  
+        path.lineTo(-21*unit, 24*unit);                                   //6
+        path.lineTo(-27*unit, 20*unit);                                   //7
+        path.lineTo(-31*unit, 24*unit);                                   //8
+        path.lineTo(-29*unit, 28*unit);                                   //9
+        path.lineTo(-17*unit, 28*unit);                                   //10
+        path.lineTo(-5*unit, 28*unit);                                    //11
+        path.lineTo(-5*unit, 32*unit);                                    //12
+        path.lineTo(-3*unit, 32*unit);                                    //13
+        path.lineTo(-2*unit, 36*unit);                                    //14
+        path.lineTo(-1*unit, 32*unit);                                    //15
+        path.lineTo(1*unit, 32*unit);                                    //15
+        path.lineTo(2*unit, 36*unit);                                    //14
+        path.lineTo(3*unit, 32*unit);                                    //13
+        path.lineTo(5*unit, 32*unit);                                    //12
+        path.lineTo(5*unit, 28*unit);                                    //11
+        path.lineTo(17*unit, 28*unit);                                   //10
+        path.lineTo(29*unit, 28*unit);                                   //9
+        path.lineTo(31*unit, 24*unit);                                   //8
+        path.lineTo(27*unit, 20*unit);                                   //7
+        path.lineTo(21*unit, 24*unit);                                   //6
+        path.lineTo(5*unit, 18*unit);                                    //5
+        path.lineTo(5*unit, 8*unit);                                     //4
+        path.lineTo(5*unit, 0*unit);                                     //3
+        path.lineTo(3*unit, -6*unit);                                    //2
+        path.moveTo(1*unit, -10*unit);                                   //1
+        path.moveTo(-1*unit, -10*unit);                                  //1
+
+
+
+        /* old design
         var sWidth = canvas.width;
         var path = new Path2D();
         //triangle
@@ -89,6 +129,7 @@ export function createShip(canvas ,ctx, x1, y1) {
         path.lineTo(-sWidth/9, sWidth/7);                       //left-wing
         path.lineTo(-sWidth/9, sWidth/9);
         path.lineTo(sWidth/30, sWidth/9);
+        */
 
         ctx.fill(path);                                         //End figure
         PATH = path;
